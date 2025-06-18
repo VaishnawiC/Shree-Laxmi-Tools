@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact - Shree Laxmi Tools</title>
+    <link rel="stylesheet" href="style.css">
+<script src="js/main.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>Contact Us</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="products.html">Products</a>
+            <a href="customers.html">Customers</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+    <section class="content">
+        <form action="http://localhost:5000/contact" method="post" enctype="application/x-www-form-urlencoded">
+            <label for="name">Name:</label><br>
+            <input type="text" id="name" name="name" required><br>
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email" required><br>
+            <label for="message">Message:</label><br>
+            <textarea id="message" name="message" rows="5" required></textarea><br>
+            <input type="submit" value="Send Enquiry">
+        </form>
+    </section>
+    <footer>
+        <p>Contact: 9850571123 | Email: shreelaxmitoolskop@gmail.com</p>
+    </footer>
+</body>
+</html>

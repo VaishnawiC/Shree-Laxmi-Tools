@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shree Laxmi Tools - Customers</title>
+    <style>
+        /* Reset CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        /* Main Styles */
+        body {
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: #fff;
+            padding: 15px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 50px;
+        }
+        
+        .logo-text {
+            margin-left: 10px;
+            border-left: 1px solid #ccc;
+            padding-left: 10px;
+        }
+        
+        .logo-text h1 {
+            font-size: 24px;
+            color: #0d47a1;
+            font-weight: bold;
+        }
+        
+        .logo-text p {
+            font-size: 12px;
+            color: #0d47a1;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            padding: 5px 10px;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover,
+        nav ul li a.active {
+            color: #0d47a1;
+            border-bottom: 2px solid #0d47a1;
+        }
+        
+        /* Page Banner */
+        .page-banner {
+            background-color: #0d47a1;
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .page-banner h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        
+        /* Customers Section */
+        .customers-section {
+            padding: 80px 0;
+        }
+        
+        .customers-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 60px;
+        }
+        
+        .customers-intro h2 {
+            font-size: 32px;
+            color: #0d47a1;
+            margin-bottom: 20px;
+        }
+        
+        .customers-intro p {
+            font-size: 18px;
+        }
+        
+        .industries {
+            margin-bottom: 60px;
+        }
+        
+        .industries h3 {
+            text-align: center;
+            font-size: 24px;
+            color: #0d47a1;
+            margin-bottom: 30px;
+        }
+        
+        .industry-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+        
+        .industry-card {
+            flex: 0 0 calc(33.333% - 30px);
+            background-color: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            padding: 30px;
+            border-radius: 8px;
+            transition: transform 0.3s;
+            text-align: center;
+        }
+        
+        .industry-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .industry-icon {
+            font-size: 40px;
+            color: #0d47a1;
+            margin-bottom: 20px;
+        }
+        
+        .industry-card h4 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: #0d47a1;
+        }
+        
+        .industry-card p {
+            color: #666;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            background-color: #f5f5f5;
+            padding: 80px 0;
+        }
+        
+        .testimonials h3 {
+            text-align: center;
+            font-size: 24px;
+            color: #0d47a1;
+            margin-bottom: 50px;
+        }
+        
+        .testimonial-carousel {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .testimonial-slide {
+            background-color: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            display: none;
+        }
+        
+        .testimonial-slide.active {
+            display: block;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #555;
+        }
+        
+        .testimonial-author {
+            font-weight: bold;
+            color: #0d47a1;
+        }
+        
+        .testimonial-company {
+            color: #666;
+        }
+        
+        .testimonial-nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+        
+        .testimonial-dot {
+            width: 12px;
+            height: 12px;
+            background-color: #ddd;
+            border-radius: 50%;
+            margin: 0 5px;
+            cursor: pointer;
+        }
+        
+        .testimonial-dot.active {
+            background-color: #0d47a1;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .cta-section h3 {
+            font-size: 28px;
+            color: #0d47a1;
+            margin-bottom: 20px;
+        }
+        
+        .cta-section p {
+            max-width: 600px;
+            margin: 0 auto 30px;
+            font-size: 18px;
+        }
+        
+        .cta-btn {
+            display: inline-block;
+            background-color: #0d47a1;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .cta-btn:hover {
+            background-color: #0a3d8f;
+            transform: translateY(-2px);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #0d47a1;
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        
+        .footer-logo {
+            flex: 0 0 30%;
+            margin-bottom: 30px;
+        }
+        
+        .footer-logo img {
+            height: 60px;
+            margin-bottom: 15px;
+        }
+        
+        .footer-links {
+            flex: 0 0 20%;
+            margin-bottom: 30px;
+        }
+        
+        .footer-links h3 {
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+        
+        .footer-links a:hover {
+            opacity: 0.8;
+        }
+        
+        .footer-contact {
+            flex: 0 0 30%;
+            margin-bottom: 30px;
+        }
+        
+        .footer-contact h3 {
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+        
+        .footer-contact p {
+            margin-bottom: 10px;
+        }
+        
+        .contact-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .contact-info i {
+            margin-right: 10px;
+            font-size: 20px;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        /* Form Styles */
+        .enquiry-form {
+            margin-top: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        .submit-btn {
+            background-color: white;
+            color: #0d47a1;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .submit-btn:hover {
+            background-color: #f5f5f5;
+        }
+        
+        @media screen and (max-width: 768px) {
+            .industry-card {
+                flex: 0 0 calc(50% - 30px);
+            }
+            
+            .footer-logo,
+            .footer-links,
+            .footer-contact {
+                flex: 0 0 100%;
+            }
+            
+            nav ul {
+                display: none;
+            }
+        }
+        
+        @media screen and (max-width: 480px) {
+            .industry-card {
+                flex: 0 0 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="C:\Users\Vaishnawi\Desktop\shree_laxmi_tools\logo.png" alt="Shree Laxmi Tools Logo">
+                <div class="logo-text">
+                    <h1>SHREE LAXMI TOOLS</h1>
+                    <p>Precision Engineering Solutions</p>
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Products</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#" class="active">Customers</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Page Banner -->
+    <section class="page-banner">
+        <div class="container">
+            <h1>Our Customers</h1>
+            <p>Trusted partnerships built on quality and reliability</p>
+        </div>
+    </section>
+    
+    <!-- Customers Section -->
+    <section class="customers-section">
+        <div class="container">
+            <div class="customers-intro">
+                <h2>Serving Industries Across India</h2>
+                <p>At Shree Laxmi Tools, we've built strong relationships with leading companies across various manufacturing sectors. Our commitment to precision engineering and quality has made us a preferred partner for businesses throughout the industrial landscape.</p>
+            </div>
+            
+            <div class="industries">
+                <h3>Industries We Serve</h3>
+                <div class="industry-grid">
+                    <div class="industry-card">
+                        <div class="industry-icon">🏭</div>
+                        <h4>Automotive</h4>
+                        <p>Providing precision tools and components for automotive manufacturing and aftermarket parts.</p>
+                    </div>
+                    <div class="industry-card">
+                        <div class="industry-icon">⚙️</div>
+                        <h4>Industrial Manufacturing</h4>
+                        <p>Supporting manufacturers with specialized tooling solutions for various production processes.</p>
+                    </div>
+                    <div class="industry-card">
+                        <div class="industry-icon">🔧</div>
+                        <h4>Machine Shop</h4>
+                        <p>Supplying precision tools for machining operations and CNC applications.</p>
+                    </div>
+                    <div class="industry-card">
+                        <div class="industry-icon">🚜</div>
+                        <h4>Agricultural Equipment</h4>
+                        <p>Creating durable tools and components for agricultural machinery manufacturers.</p>
+                    </div>
+                    <div class="industry-card">
+                        <div class="industry-icon">🔌</div>
+                        <h4>Electrical Components</h4>
+                        <p>Specialized tools for electrical component manufacturing and assembly.</p>
+                    </div>
+                    <div class="industry-card">
+                        <div class="industry-icon">🏗️</div>
+                        <h4>Construction Equipment</h4>
+                        <p>Providing robust tooling solutions for construction equipment manufacturers.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <h3>What Our Customers Say</h3>
+            <div class="testimonial-carousel">
+                <div class="testimonial-slide active">
+                    <p class="testimonial-text">"Shree Laxmi Tools has consistently delivered high-quality precision tools that meet our exact specifications. Their attention to detail and commitment to deadlines has made them our go-to supplier for years."</p>
+                    <p class="testimonial-author">Rajesh Patel</p>
+                    <p class="testimonial-company">Precision Engineering Works</p>
+                </div>
+                <div class="testimonial-slide">
+                    <p class="testimonial-text">"We've been working with Shree Laxmi Tools for over 5 years, and they've always provided excellent service and products. Their technical expertise has helped us improve our manufacturing processes significantly."</p>
+                    <p class="testimonial-author">Amit Sharma</p>
+                    <p class="testimonial-company">Autotech Components Ltd.</p>
+                </div>
+                <div class="testimonial-slide">
+                    <p class="testimonial-text">"When we need custom tooling solutions, Shree Laxmi Tools is our first choice. They understand our requirements perfectly and deliver quality products that enhance our productivity."</p>
+                    <p class="testimonial-author">Priya Desai</p>
+                    <p class="testimonial-company">Modern Machinery Solutions</p>
+                </div>
+                <div class="testimonial-nav">
+                    <div class="testimonial-dot active"></div>
+                    <div class="testimonial-dot"></div>
+                    <div class="testimonial-dot"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h3>Partner with Shree Laxmi Tools</h3>
+            <p>Discover how our precision engineering solutions can enhance your manufacturing processes and product quality.</p>
+            <a href="#" class="cta-btn">Contact Us Today</a>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-container">
+            <div class="footer-logo">
+                <img src="C:\Users\Vaishnawi\Desktop\shree_laxmi_tools\logo.png" alt="Shree Laxmi Tools Logo">
+                <p>Precision engineering solutions since 1995</p>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Products</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Customers</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h3>Products</h3>
+                <ul>
+                    <li><a href="#">Precision Tools</a></li>
+                    <li><a href="#">Machine Components</a></li>
+                    <li><a href="#">Custom Solutions</a></li>
+                    <li><a href="#">Replacement Parts</a></li>
+                    <li><a href="#">Machinery Tools</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h3>Contact Us</h3>
+                <div class="contact-info">
+                    <i>📞</i>
+                    <p>9850571123</p>
+                </div>
+                <div class="contact-info">
+                    <i>✉️</i>
+                    <p>shreelaxmitoolskop@gmail.com</p>
+                </div>
+                <div class="contact-info">
+                    <i>👤</i>
+                    <p>Proprietor: Abhay Ashok Chandavale</p>
+                </div>
+                
+                <form class="enquiry-form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Name">
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-control" placeholder="Email">
+                    </div>
+                    <button type="submit" class="submit-btn">Submit</button>
+                </form>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 Shree Laxmi Tools. All Rights Reserved.</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Simple testimonial carousel script
+        document.addEventListener('DOMContentLoaded', function() {
+            const slides = document.querySelectorAll('.testimonial-slide');
+            const dots = document.querySelectorAll('.testimonial-dot');
+            
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    // Remove active class from all slides and dots
+                    slides.forEach(slide => slide.classList.remove('active'));
+                    dots.forEach(dot => dot.classList.remove('active'));
+                    
+                    // Add active class to current slide and dot
+                    slides[index].classList.add('active');
+                    dot.classList.add('active');
+                });
+            });
+            
+            // Auto rotate testimonials
+            let currentIndex = 0;
+            setInterval(() => {
+                currentIndex = (currentIndex + 1) % slides.length;
+                
+                // Remove active class from all slides and dots
+                slides.forEach(slide => slide.classList.remove('active'));
+                dots.forEach(dot => dot.classList.remove('active'));
+                
+                // Add active class to current slide and dot
+                slides[currentIndex].classList.add('active');
+                dots[currentIndex].classList.add('active');
+            }, 5000);
+        });
+    </script>
+</body>
+</html>
